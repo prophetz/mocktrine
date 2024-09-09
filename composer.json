@@ -1,5 +1,5 @@
 {
-    "name": "firehed/mocktrine",
+    "name": "prophetz/mocktrine",
     "description": "PHPUnit Doctrine mocking tools",
     "type": "library",
     "require": {
