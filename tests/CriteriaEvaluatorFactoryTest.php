@@ -7,12 +7,11 @@ namespace Firehed\Mocktrine;
 use Doctrine\Persistence\Mapping\ClassMetadata;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Small;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CriteriaEvaluatorFactory::class)]
 #[Small]
-class CriteriaEvaluatorFactoryTest extends \PHPUnit\Framework\TestCase
+class CriteriaEvaluatorFactoryTest extends TestCase
 {
     public function testGetInstanceReturnsSingleton(): void
     {

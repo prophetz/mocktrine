@@ -5,19 +5,16 @@ declare(strict_types=1);
 namespace Firehed\Mocktrine;
 
 use DateTimeImmutable;
-use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
-use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Firehed\Mocktrine\Entities\GrabBag;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Small;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CriteriaEvaluator::class)]
 #[Small]
-class CriteriaEvaluatorTest extends \PHPUnit\Framework\TestCase
+class CriteriaEvaluatorTest extends TestCase
 {
     /** @var InMemoryRepository<GrabBag> */
     private InMemoryRepository $repo;
@@ -27,8 +24,7 @@ class CriteriaEvaluatorTest extends \PHPUnit\Framework\TestCase
 
     public function setUp(): void
     {
-        $reader = new AnnotationReader();
-        $em = new InMemoryEntityManager(new AnnotationDriver($reader));
+        $em = new InMemoryEntityManager(new AttributeDriver([__DIR__ . '/Entities']));
         $repo = $em->getRepository(GrabBag::class);
         $this->entities = [
             new GrabBag(true, 30, 'hello', new DateTimeImmutable()),

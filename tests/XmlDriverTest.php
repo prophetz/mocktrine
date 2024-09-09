@@ -4,14 +4,9 @@ declare(strict_types=1);
 
 namespace Firehed\Mocktrine;
 
-use Doctrine\ORM\{
-    EntityManagerInterface,
-    Mapping,
-};
+use Doctrine\ORM\Mapping;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Small;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 
 #[CoversClass(InMemoryEntityManager::class)]
 #[Small]

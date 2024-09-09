@@ -4,31 +4,28 @@ declare(strict_types=1);
 
 namespace Firehed\Mocktrine;
 
-use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\Persistence\ObjectRepository;
-use Doctrine\ORM\ORMException;
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Doctrine\ORM\Mapping\MappingException;
 use Doctrine\Persistence\Mapping\Driver\MappingDriver;
 use Error;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Small;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use TypeError;
 use UnexpectedValueException;
 
 #[CoversClass(InMemoryRepository::class)]
 #[Small]
-class InMemoryRepositoryTest extends \PHPUnit\Framework\TestCase
+class InMemoryRepositoryTest extends TestCase
 {
     private MappingDriver $driver;
 
     public function setUp(): void
     {
-        $reader = new AnnotationReader();
-        $this->driver = new AnnotationDriver($reader);
+        $this->driver = new AttributeDriver([__DIR__ . '/Entities']);
     }
 
     public function testConstruct(): void
