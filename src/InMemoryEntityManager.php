@@ -148,7 +148,6 @@ class InMemoryEntityManager implements EntityManagerInterface
      */
     public function clear($objectName = null)
     {
-        throw new RuntimeException(__METHOD__ . ' not yet implemented');
     }
 
     /**
@@ -541,7 +540,7 @@ class InMemoryEntityManager implements EntityManagerInterface
      */
     public function getConfiguration(): Configuration
     {
-        throw new RuntimeException(__METHOD__ . ' not yet implemented');
+        return new Configuration();
     }
 
     /**

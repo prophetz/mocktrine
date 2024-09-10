@@ -36,22 +36,19 @@ class InMemoryDriverConnection implements Connection
 
     public function beginTransaction(): void
     {
-        throw new RuntimeException(__METHOD__ . ' not yet implemented');
     }
 
     public function commit(): void
     {
-        throw new RuntimeException(__METHOD__ . ' not yet implemented');
     }
 
     public function rollBack(): void
     {
-        throw new RuntimeException(__METHOD__ . ' not yet implemented');
     }
 
     public function getNativeConnection()
     {
-        throw new RuntimeException(__METHOD__ . ' not yet implemented');
+        return new \stdClass();
     }
 
     public function getServerVersion(): string
