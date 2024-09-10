@@ -6,12 +6,10 @@ namespace Firehed\Mocktrine;
 
 use BadMethodCallException;
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\Common\Collections\Expr\{
-    Comparison,
-    CompositeExpression,
-    Expression,
-    Value,
-};
+use Doctrine\Common\Collections\Expr\Comparison;
+use Doctrine\Common\Collections\Expr\CompositeExpression;
+use Doctrine\Common\Collections\Expr\Expression;
+use Doctrine\Common\Collections\Expr\Value;
 use Doctrine\Common\Collections\Order;
 use Doctrine\Persistence\Mapping\ClassMetadata;
 use DomainException;
@@ -277,13 +275,13 @@ class CriteriaEvaluator
                     // property in the sorting criteria
                     continue;
                 }
-                if ($direction === Criteria::ASC) {
+                if ($direction === Order::Ascending) {
                     if ($v1 > $v2) {
                         return 1;
                     } else {
                         return -1;
                     }
-                } elseif ($direction === Criteria::DESC) {
+                } elseif ($direction === Order::Descending) {
                     if ($v1 < $v2) {
                         return 1;
                     } else {
