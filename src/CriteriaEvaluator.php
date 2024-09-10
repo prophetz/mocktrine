@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\Expr\{
     Expression,
     Value,
 };
+use Doctrine\Common\Collections\Order;
 use Doctrine\Persistence\Mapping\ClassMetadata;
 use DomainException;
 use ReflectionClass;
@@ -74,7 +75,7 @@ class CriteriaEvaluator
         $expr = $criteria->getWhereExpression();
         $entities = $this->match($entities, $expr);
 
-        if ($orderings = $criteria->getOrderings()) {
+        if ($orderings = $criteria->orderings()) {
             $entities = $this->sortResults($entities, $orderings);
         }
 
@@ -242,7 +243,7 @@ class CriteriaEvaluator
 
     /**
      * @param Entity[] $results
-     * @param array<string, string> $orderBy (actually
+     * @param array<string, Order> $orderBy (actually
      * Criteria::ASC|Criteria:::DESC but the PHPStan annotations won't work)
      * @return Entity[]
      */
