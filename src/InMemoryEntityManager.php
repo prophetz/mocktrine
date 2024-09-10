@@ -27,9 +27,6 @@ use Doctrine\DBAL\LockMode;
 use Doctrine\Persistence\Mapping\Driver\MappingDriver;
 use RuntimeException;
 use DateTimeInterface;
-use ReflectionException;
-
-use function class_exists;
 
 class InMemoryEntityManager implements EntityManagerInterface
 {
@@ -308,7 +305,7 @@ class InMemoryEntityManager implements EntityManagerInterface
      */
     public function getConnection(): Connection
     {
-        return new InMemoryConnection();
+        throw new RuntimeException(__METHOD__ . ' not yet implemented');
     }
 
     /**
